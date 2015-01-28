@@ -1,0 +1,18 @@
+var dotenv = require('dotenv')
+dotenv.load()
+var http = require('http')
+//loads http module
+var STATE = process.env.STATE || "No"
+var app = http.createServer(function (req, res) {
+  //creates server
+  res.writeHead(200, {'Content-Type': 'text/plain'})
+  //sets the right header and status code
+  res.end(STATE+"\n")
+  //outputs string with line end symbol
+})
+var port = process.env.PORT || 5000
+app.listen(port, function() {
+  console.log("Listening on " + port)
+})
+//sets port and IP address of the server
+console.log('Server running at http://127.0.0.1:'+port+'/')
